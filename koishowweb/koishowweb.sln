@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "koishowweb", "koishowweb\koishowweb.csproj", "{5D042E37-8CE6-482F-A624-C39F4D962CF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D042E37-8CE6-482F-A624-C39F4D962CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D042E37-8CE6-482F-A624-C39F4D962CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D042E37-8CE6-482F-A624-C39F4D962CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D042E37-8CE6-482F-A624-C39F4D962CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F749580-8DCF-407A-A30E-3866C444C2B1}
+	EndGlobalSection
+EndGlobal
