@@ -1,59 +1,139 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from "react";
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from "recharts";
 
-export class FetchData extends Component {
-  static displayName = FetchData.name;
+const FetchData = () => {
+  const [ChartData1, setChartData1] = useState();
+  const [ChartData2, setChartData2] = useState();
+  const [ChartData3, setChartData3] = useState();
+  const [ChartData4, setChartData4] = useState();
+  const [ChartData5, setChartData5] = useState();
+  const [ChartData6, setChartData6] = useState();
+  const [ChartData7, setChartData7] = useState();
+  const [ChartData8, setChartData8] = useState();
 
-  constructor(props) {
-    super(props);
-    this.state = { forecasts: [], loading: true };
-  }
+  useEffect(() => {
+    if (ChartData1 == null) {
+      GetFilterData();
+    }
+  });
 
-  componentDidMount() {
-    this.populateWeatherData();
-  }
+  const GetFilterData = async () => {
+    setChartData1([]);
+    const response = await fetch("api/Temperature/28-3ce104573381/" + 100);
+    const dataa = await response.json();
+    let data = [];
+    dataa.forEach((element) => {
+      var dataelement = {
+        name: element.dateTime,
+        temp: element.value,
+        pv: 2400,
+        amt: 2400,
+      };
+      data.push(dataelement);
+    });
+    setChartData1(data);
+  };
 
-  static renderForecastsTable(forecasts) {
-    return (
-      <table className='table table-striped' aria-labelledby="tabelLabel">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-          </tr>
-        </thead>
-        <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.date}>
-              <td>{forecast.date}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    );
-  }
+  return (
+    <div className="d-flex flex-wrap">
+      <LineChart
+        width={600}
+        height={300}
+        data={ChartData1}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+      >
+        <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
+      <LineChart
+        width={600}
+        height={300}
+        data={ChartData1}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+      >
+        <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
+      <LineChart
+        width={600}
+        height={300}
+        data={ChartData1}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+      >
+        <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
+      <LineChart
+        width={600}
+        height={300}
+        data={ChartData1}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+      >
+        <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
+      <LineChart
+        width={600}
+        height={300}
+        data={ChartData1}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+      >
+        <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
+      <LineChart
+        width={600}
+        height={300}
+        data={ChartData1}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+      >
+        <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
+      <LineChart
+        width={600}
+        height={300}
+        data={ChartData1}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+      >
+        <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
+      <LineChart
+        width={600}
+        height={300}
+        data={ChartData1}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+      >
+        <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
+    </div>
+  );
+};
 
-  render() {
-    let contents = this.state.loading
-      ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
-
-    return (
-      <div>
-        <h1 id="tabelLabel" >Weather forecast</h1>
-        <p>This component demonstrates fetching data from the server.</p>
-        {contents}
-      </div>
-    );
-  }
-
-  async populateWeatherData() {
-    const response = await fetch('weatherforecast');
-    const data = await response.json();
-    this.setState({ forecasts: data, loading: false });
-  }
-}
+export default FetchData;
